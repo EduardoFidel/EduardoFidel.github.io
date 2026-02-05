@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Melanie ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(#ffe6f2, #ffb3d9);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        h1 { color: #d63384; font-size: 2.5em; }
+        p { color: #555; font-size: 1.2em; line-height: 1.6; }
+
+        .btn-container { margin-top: 20px; }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        #siBtn { background-color: #ff4d94; color: white; margin-right: 10px; }
+        #noBtn { background-color: #aaa; color: white; }
+
+        /* Animación de flores y corazones */
+        .falling-item {
+            position: absolute;
+            top: -50px;
+            font-size: 25px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Hola Melanie! 🌊🦭</h1>
+        <p>Primero, vamos a sumergirnos con los lobos marinos... <br>
+           y luego, una cena inolvidable en <strong>Insumo</strong>.</p>
+        <p>Pero antes de todo eso, tengo una pregunta importante:</p>
+        <h2>¿Quieres ser mi San Valentín?</h2>
+        
+        <div class="btn-container">
+            <button id="siBtn">¡SÍ! ❤️</button>
+            <button id="noBtn" onmouseover="huir()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Generar flores y corazones
+        const items = ['🌸', '🌹', '🌷', '💖', '✨', '🌊'];
+        function createFallingItem() {
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+            item.innerHTML = items[Math.floor(Math.random() * items.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(item);
+            setTimeout(() => item.remove(), 5000);
+        }
+        setInterval(createFallingItem, 300);
+
+        // El botón "No" se escapa
+        function huir() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.clientWidth);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Acción al decir que sí
+        document.getElementById('siBtn').onclick = function() {
+            alert("¡Sabía que dirías que sí! 🦭❤️ Prepárate para el mejor San Valentín.");
+        };
+    </script>
+</body>
+</html>
